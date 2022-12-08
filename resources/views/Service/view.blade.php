@@ -29,37 +29,37 @@
 
                 <div class="card  cardbg">
                     <div class="card-header  " style="color: palevioletred">
-                        Student
+                        Service
 
                     </div>
                     <div class="card-body  ">
-                        <div class="table-responsive">
 
-                            <table class="table table-hover ">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-responsive ">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">id</th>
-                                        <th scope="col">Profile</th>
-                                        <th scope="col">First</th>
-                                        <th scope="col">Last</th>
-                                        <th scope="col">Email</th>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">ServiceName</th>
+                                        <th scope="col">CreatedAt</th>
                                         <th scope="col">Edit</th>
                                         <th scope="col">Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($user as $row)
+                                    @foreach ($service as $row)
                                         <tr>
                                             @csrf
-                                            <td>{{ $user->firstItem() + $loop->index }}</td>
+                                            <td>{{ $service->firstItem() + $loop->index }}</td>
                                             <td>{{ $row->id }}</td>
-                                            <td><img src="{{ $row->image }}" style="width: 15%"></td>
-                                            <td>{{ $row->firstname }}</td>
-                                            <td>{{ $row->lastname }}</td>
-                                            <td>{{ $row->email }}</td>
+                                            <td>
+                                                <img src="{{asset($row->service_image)}}" alt="" style="width: 30%; ">
+                                            </td>
+                                            <td>{{ $row->service_name }}</td>
+                                            <td>{{ Carbon\Carbon::parse($row->created_at)->diffForHumans() }}</td>
                                             <td><label><a class="btn btn-primary"
-                                                        href="{{ url('/manage/edit/' . $row->id) }}">Edit</a></label>
+                                                        href="{{ url('/manage/service/edit/'. $row->id) }}">Edit</a></label>
                                             </td>
                                             <td><label><a class="btn btn-danger"
                                                         href="{{ url('/manage/del/' . $row->id) }}">Del.</a></label>
@@ -70,7 +70,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        {{ $user->links('pagination::bootstrap-4') }}
+                        {{ $service->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
 
@@ -81,8 +81,8 @@
                         Add
                     </div>
                     <div class="card-body   ">
-                        <label class="d-flex justify-content-center"><a href="{{ url('/manage/add') }}"
-                                class="btn btn-primary">Add Student</a></label>
+                        <label class="d-flex justify-content-center"><a href="{{ url('/manage/service') }}"
+                                class="btn btn-primary">Add Service</a></label>
                     </div>
                 </div>
             </div>

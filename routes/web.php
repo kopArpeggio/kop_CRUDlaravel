@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,8 @@ Route::post('/manage/insert', [UserController::class,'insert'])->name('insert');
 Route::get('/manage/edit/{id}', [UserController::class,'edit']);
 Route::post('/manage/update/{id}', [UserController::class,'update']);
 Route::get('/manage/del/{id}', [UserController::class,'delete']);
+
+Route::get('/manage/viewservice',[ServiceController::class,'view']);
+Route::get('/manage/service',[ServiceController::class,'index']);
+Route::get('/manage/service/edit/{id}',[ServiceController::class,'edit']);
+Route::post('/manage/service/add',[ServiceController::class,'add']);
