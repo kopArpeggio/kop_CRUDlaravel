@@ -78,34 +78,40 @@ class UserController extends Controller
                 'email' => 'max:50'
             ]
         );
-        
+
         $raw_img = $request->file('image');
-        $gen_name  = hexdec(uniqid());
-
-        $img_ext = strtolower($raw_img->getClientOriginalExtension());
-        $img_name = $gen_name . $img_ext;
-
-        //img path
-        $upload_location = 'image/services/';
-        $fullpatch = $upload_location . $img_name;
-
-       
 
         if ($raw_img) {
-            dd('อัพเดตภาพและชื่อ');
+            $gen_name  = hexdec(uniqid());
+            $img_ext = strtolower($raw_img->getClientOriginalExtension());
+            $img_name = $gen_name . $img_ext;
+
+            //img path
+            $upload_location = 'image/services/';
+            $fullpatch = $upload_location . $img_name;
+            
+            Student::find($id)->update([
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'email' => $request->email,
+                'image' => $fullpatch
+            ]);
+            //ลบภาพเก่าอัพภาพใหม่
+            $old_image = $request->old_image;
+            unlink($old_image);
+            $raw_img->move($upload_location,$img_name);
+
+            return redirect('/manage');
+
         } else {
-            dd('อัพเดตชื่ออย่างเดียว');
+            //อัพเดตชื่ออย่างเดียว
+            Student::find($id)->update([
+                'firstname' => $request -> firstname,
+                'lastname' => $request -> lastname,
+                'email' => $request -> email
+            ]);
+            return redirect('/manage');
         }
-
-
-        $user = Student::find($id)->update([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'email' => $request->email
-        ]);
-        
-        $old_image = $request->old_image;
-        // return redirect('/manage');
     }
     public function delete($id)
     {
