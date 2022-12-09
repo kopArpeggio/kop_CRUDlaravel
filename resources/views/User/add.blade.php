@@ -26,7 +26,7 @@
                 <div class="card mx-auto ">
                     <div class="card-header d-flex justify-content-center test">Student Description</div>
                     <div class="card-body">
-                        <form action="{{ route('insert') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('insert') }}" method="post" enctype=”multipart/form-data”>
                             @csrf
                             <div class="mb-3 row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Firstname : </label>
@@ -76,11 +76,7 @@
                                 <input type="submit" value="Add" class="btn btn-primary">
 
                             </div>
-                            @error('firstname')
-                                <div class="text-danger">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                         
 
                         </form>
                     </div>

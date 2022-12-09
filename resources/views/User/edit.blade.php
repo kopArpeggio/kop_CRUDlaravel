@@ -66,7 +66,7 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center">
-                                <input type="submit" value="Update" class="btn btn-primary">
+                                <input type="submit" value="Update" class="btn btn-primary ">
                                 <label><a href="{{ url('/manage') }}" class="btn btn-danger">Back</a></label>
 
                             </div>

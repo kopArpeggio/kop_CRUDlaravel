@@ -4,7 +4,6 @@
 
 .my-auto {
     margin-top: auto;
-    color: red;
     margin-bottom: auto;
 }
 
@@ -44,4 +43,14 @@
 
 .cardbg2:hover {
     opacity: 1;
+}
+
+.btn-primary {
+    background-color: #e27184 !important;
+    border: none !important;
+    transition: 0.3s !important;
+}
+
+.btn-primary:hover{
+    background-color: #c56373 !important;
 }

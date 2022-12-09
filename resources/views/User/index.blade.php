@@ -58,7 +58,7 @@
                                             <td>{{ $row->firstname }}</td>
                                             <td>{{ $row->lastname }}</td>
                                             <td>{{ $row->email }}</td>
-                                            <td><label><a class="btn btn-primary"
+                                            <td><label><a class="btn btn-primary edit-btn"
                                                         href="{{ url('/manage/edit/' . $row->id) }}">Edit</a></label>
                                             </td>
                                             <td><label><a class="btn btn-danger"
@@ -80,7 +80,8 @@
                     <div class="card-header" style="color: palevioletred">
                         Add
                     </div>
-                    <div class="card-body   ">
+                    <div class="card-body">
+                        
                         <label class="d-flex justify-content-center"><a href="{{ url('/manage/add') }}"
                                 class="btn btn-primary">Add Student</a></label>
                     </div>
